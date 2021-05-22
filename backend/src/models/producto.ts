@@ -1,7 +1,7 @@
 export interface producto {
     id:number;
-    marca:string;
     nombre:string;
+    marca:string;
     descripcion:string;
     disponibilidad:number;
     precio:number;
