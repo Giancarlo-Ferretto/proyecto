@@ -18,7 +18,7 @@ export function getProduct(req:any, res:any) {
 
 //POST
 export function postProduct(req:any, res:any) {
-    const newProduct:product = req.body
+    const newProduct:product = req.body;
 
     return connection.query("INSERT INTO products SET ?", [newProduct], function (error:any, results:any, fields:any) {
         if (error) throw error;
@@ -29,7 +29,7 @@ export function postProduct(req:any, res:any) {
 //PUT
 export function putProduct(req:any, res:any) {
     let id = req.params.id;
-    const updatedProduct:product = req.body
+    const updatedProduct:product = req.body;
 
     return connection.query("UPDATE products SET ? WHERE ID = ?", [updatedProduct, id], (req_:any, results:any) => {
         res.status(200).send(results);
