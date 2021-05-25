@@ -18,7 +18,7 @@ export function getUser(req:any, res:any) {
 
 //POST
 export function postUser(req:any, res:any) {
-    const newUser:user = JSON.parse(JSON.stringify(req.body));
+    const newUser:user = req.body
 
     return connection.query("INSERT INTO users SET ?", [newUser], function (error:any, results:any, fields:any) {
         if (error) throw error;
@@ -29,7 +29,7 @@ export function postUser(req:any, res:any) {
 //PUT
 export function putUser(req:any, res:any) {
     let id = req.params.id;
-    const updatedUser:user = JSON.parse(JSON.stringify(req.body));
+    const updatedUser:user = req.body
 
     return connection.query("UPDATE users SET ? WHERE ID = ?", [updatedUser, id], (req_:any, results:any) => {
         res.status(200).send(results);
