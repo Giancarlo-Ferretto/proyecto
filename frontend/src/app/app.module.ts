@@ -9,6 +9,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { FooterComponent } from './pages/footer/footer.component';
 import { HeaderComponent } from './pages/header/header.component';
 
+import { ReactiveFormsModule } from '@angular/forms'
+import { RecaptchaModule, RecaptchaFormsModule } from "ng-recaptcha";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCommonModule } from '@angular/material/core';
@@ -35,6 +37,9 @@ import { MatSelectModule } from '@angular/material/select';
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
+    RecaptchaModule,
+    RecaptchaFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FlexLayoutModule,

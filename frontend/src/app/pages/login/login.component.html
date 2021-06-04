@@ -1,15 +1,15 @@
 <div fxLayoutAlign="center center" fxFlexFill class="login">
     <mat-card fxFlex="25">
         <mat-toolbar color="primary">Login</mat-toolbar>
-        <form fxLayoutAlign="stretch" fxLayout="column" class="login-form">
+        <form fxLayoutAlign="stretch" fxLayout="column" class="login-form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
     
             <mat-form-field>
-                <input matInput type="email" placeholder="Correo electrónico">
+                <input matInput type="email" placeholder="Correo electrónico" formControlName="email">
             </mat-form-field>
 
             <mat-form-field>
                 <mat-label>Contraseña</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'">
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
                 <button mat-icon-button type="button" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                   <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
@@ -18,9 +18,13 @@
             <mat-checkbox>
                 Recuérdame
             </mat-checkbox>
+            
+            <div class="captcha">
+                <re-captcha formControlName="recaptcha" (resolved)="resolved($event)" (error)="onError($event)" errorMode="handled" siteKey="6LdY3g4bAAAAAAILfMJwbcMN9oCexnR0JPgle_yt"></re-captcha>
+            </div>
 
-            <button mat-raised-button color="primary" type="submit">ACCEDER</button> 
-            <button mat-raised-button type="button">REGISTRARME</button> 
+            <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">ACCEDER</button> 
+            <button mat-raised-button type="button" [routerLink]="['/register']">REGISTRARME</button> 
         </form>
     </mat-card>
 </div>
