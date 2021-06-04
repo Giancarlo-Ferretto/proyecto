@@ -19,10 +19,7 @@ app.get('/', (req:any, res:any) => {
 });
 
 //imports
-import productRoutes from './routes/product.routes';
-import userRoutes from './routes/user.routes';
-
-app.use('/product', productRoutes);
-app.use('/user', userRoutes);
+import clientRoutes from './routes/client.routes';
+app.use('/client', clientRoutes);
 
 export default app;
