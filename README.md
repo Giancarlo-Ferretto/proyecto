@@ -1,4 +1,4 @@
-#Proyecto
+# Proyecto
 
 ## Caso de estudio
 
@@ -22,7 +22,7 @@ De acuerdo con el caso de estudio que se la ha asignado, debe hacer el desarroll
 
 El desarrollo debe cumplir los siguientes requisitos mínimo:
 
-###Backend
+### Backend
 1. Uso al menos uno de los siguientes lenguajes: PHP o nodeJS. También puede hacer uso de frameworks como: Laravel, nodeJSExpress o Django.
 2. Definir el modelo a implementar y presentar el diseño de la base de datos de acuerdo al caso de estudio asignado.
 3. Justificar la decisión del tipo de base de datos seleccionada. Esta justificación es basada con los siguientes criterios: rendimiento, tamaño de datos, capacidad, configuración e implementación.
@@ -30,7 +30,7 @@ El desarrollo debe cumplir los siguientes requisitos mínimo:
 5. Cada una de las operaciones CRUD deben tener mensajes de comunicación que le informe al usuario acerca del estado de la operación.
 6. Indicar una política de seguridad que debe tomarse en cuenta para construir un backend seguro.
 
-###Frontend
+### Frontend
 7. Diseño responsivo haciendo uso de los módulos de boostrap o material design.
 8. Uso de preprocesador SASS.
 9. El diseño debe tener un header y un footer, este debe conservarse en toda la aplicación web.
