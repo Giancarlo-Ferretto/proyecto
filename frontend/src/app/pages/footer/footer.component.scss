@@ -1,0 +1,17 @@
+.footer {
+    padding: 12px;
+    font-size: 12px;
+    background-color: #3f51b5;
+    color: #fff;
+    margin-top: 25px;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+        text-decoration: underline;
+    }
+}

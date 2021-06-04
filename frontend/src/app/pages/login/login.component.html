@@ -1,0 +1,26 @@
+<div fxLayoutAlign="center center" fxFlexFill class="login">
+    <mat-card fxFlex="25">
+        <mat-toolbar color="primary">Login</mat-toolbar>
+        <form fxLayoutAlign="stretch" fxLayout="column" class="login-form">
+    
+            <mat-form-field>
+                <input matInput type="email" placeholder="Correo electrónico">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Contraseña</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button type="button" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <mat-checkbox>
+                Recuérdame
+            </mat-checkbox>
+
+            <button mat-raised-button color="primary" type="submit">ACCEDER</button> 
+            <button mat-raised-button type="button">REGISTRARME</button> 
+        </form>
+    </mat-card>
+</div>
