@@ -1,6 +1,30 @@
+<div class="navbar-header">
+
+    <button mat-button [routerLink]="['/']">
+        <mat-icon>menu</mat-icon>
+        <span>MI APLICACIÓN</span>
+    </button> 
+    
+    <span class="navbar-spacer"></span>
+    
+    <button mat-button [routerLink]="['/login']">
+        <span>ACCEDER</span>
+    </button>
+
+    <button mat-button [routerLink]="['/register']">
+        <span>REGISTRARME</span>
+    </button>
+</div>
+<!--
 <mat-toolbar color="primary">
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
         <mat-icon>menu</mat-icon>
     </button>
     <span>My App</span>
-</mat-toolbar>
+
+    
+
+    <a class="navbar-link" [routerLink]="['/login']" routerLinkActive="active" >SignIn</a>
+    <a class="navbar-link" [routerLink]="['/register']" routerLinkActive="active" >SignUp</a>
+
+</mat-toolbar>-->
