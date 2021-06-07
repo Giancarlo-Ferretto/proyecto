@@ -2,5 +2,5 @@ import app from './app';
 import './database';
 
 app.listen(app.get('port'), () => {
-    console.log(`escuchando en localhost:${app.get('port')}!`);
+    console.log(`corriendo en localhost:${app.get('port')}!`);
 });

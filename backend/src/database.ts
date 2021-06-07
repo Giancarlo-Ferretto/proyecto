@@ -13,7 +13,7 @@ connection.connect(function(error:any) {
     if(error) {
         return console.log("[mysql] error: " + error);
     }
-    console.log("[mysql] conexión establecida!");
+    console.log("[mysql] conexión establecida");
 });
 
 export default connection;
