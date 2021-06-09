@@ -5,6 +5,8 @@ import helmet from 'helmet';
 
 import authRoutes from './routes/auth.routes';
 import userRoutes from './routes/user.routes';
+import ticketRoutes from './routes/ticket.routes';
+import ticketRepliesRoutes from './routes/ticketReplies.routes';
 
 const app = express();
 
@@ -26,5 +28,7 @@ app.get('/', (req:any, res:any) => {
 //routes
 app.use('/auth', authRoutes);
 app.use('/users', userRoutes);
+app.use('/tickets', ticketRoutes);
+app.use('/ticketsreply', ticketRepliesRoutes);
 
 export default app;
