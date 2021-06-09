@@ -12,8 +12,7 @@ npm install
 npm start
 ```
 
-## Testing API
-
+Modo desarrollador
 ```
 npm run dev
 ```
