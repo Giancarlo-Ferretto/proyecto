@@ -3,7 +3,6 @@
 ## Instalación
 
 ```
-cd yourprojectfolder
 npm install 
 ```
 
