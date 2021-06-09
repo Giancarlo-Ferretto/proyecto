@@ -33,7 +33,7 @@ export const signUp = async (req:any, res:any) => {
         const newUser:User = req.body;
         newUser.password = await passwordEncryptor.encryptPassword(req.body.password);
 
-        return connection.query("INSERT INTO users SET ?", [newUser], function (error:any, results:any, fields:any) {
+        return connection.query("INSERT INTO users SET ?", [newUser], function (error:any, results:any) {
             if (error) throw error;
             if (process.env.API_KEY) {
                 const token = jwt.sign({id: results.id}, process.env.API_KEY, {
