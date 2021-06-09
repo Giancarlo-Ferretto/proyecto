@@ -1,9 +1,10 @@
 import { Router } from 'express';
 const router = Router();
 
-import * as authController from '../controllers/auth.controller'
+import * as authController from '../controllers/auth.controller';
+import * as checkSignUp from '../middlewares/checkSignUp';
 
-router.route('/signin').post(authController.signIn);
-router.route('/signup').post(authController.signUp);
+router.post('/signin', authController.signIn);
+router.post('/signup', [checkSignUp.checkDuplicateUser], authController.signUp);
 
 export default router;

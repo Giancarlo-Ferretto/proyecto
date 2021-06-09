@@ -3,6 +3,7 @@ export interface User {
     name:string;
     lastname:string;
     password:string | undefined;
+    isAdmin:number;
     rut:string;
     email:string;
     address:string;
