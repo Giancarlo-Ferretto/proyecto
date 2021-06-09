@@ -19,6 +19,7 @@ npm run dev
 ```
 
 ## Variables de entorno
+Se debe crear un archivo .env que contenga las siguientes variables de entorno:
 ```
 DB_HOST=?
 DB_USER=?
