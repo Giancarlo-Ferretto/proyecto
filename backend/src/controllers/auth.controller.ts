@@ -31,6 +31,7 @@ export const signIn = async (req:any, res:any) => {
 export const signUp = async (req:any, res:any) => {
     try {
         const newUser:User = req.body;
+        newUser.isAdmin = 0;
         newUser.password = await passwordEncryptor.encryptPassword(req.body.password);
 
         return connection.query("INSERT INTO users SET ?", [newUser], function (error:any, results:any) {
