@@ -2,11 +2,12 @@ import { Router } from 'express';
 const router = Router();
 
 import * as userController from '../controllers/user.controller'
+import * as checkToken from '../middlewares/checkToken';
 
-router.route('/').post(userController.createUser);
-router.route('/').get(userController.getUsers);
-router.route('/:id').get(userController.getUserById);
-router.route('/:id').put(userController.updateUserById);
-router.route('/:id').delete(userController.deleteUserById);
+router.post('/', [checkToken.checkToken], userController.createUser);
+router.get('/', [checkToken.checkToken], userController.getUsers);
+router.get('/:id', [checkToken.checkToken], userController.getUserById);
+router.put('/:id', [checkToken.checkToken], userController.updateUserById);
+router.delete('/:id', [checkToken.checkToken], userController.deleteUserById);
 
 export default router;
