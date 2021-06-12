@@ -7,6 +7,7 @@ import authRoutes from './routes/auth.routes';
 import userRoutes from './routes/user.routes';
 import ticketRoutes from './routes/ticket.routes';
 import ticketRepliesRoutes from './routes/ticketReplies.routes';
+import dpaRutes from './routes/dpa.routes';
 
 const app = express();
 
@@ -30,5 +31,6 @@ app.use('/auth', authRoutes);
 app.use('/users', userRoutes);
 app.use('/tickets', ticketRoutes);
 app.use('/ticketsreply', ticketRepliesRoutes);
+app.use('/regiones', dpaRutes);
 
 export default app;
