@@ -1,0 +1,26 @@
+<header>    
+    <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" [routerLink]="['/']">Proyecto</a>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/']">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/']">Team</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/']">Projects</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active">ACCEDER</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/register']" routerLinkActive="active">REGISTRARSE</a>
+            </li>
+        </ul>
+        </div>
+    </nav>
+</header>

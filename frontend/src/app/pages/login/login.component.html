@@ -1,0 +1,27 @@
+<div class="d-flex justify-content-center">
+    <div class="card">
+        <div class="card-header">
+            Login
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="form-group">
+                    <label for="inputEmail">Correo electrónico</label>
+                    <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword">Contraseña</label>
+                    <input type="password" class="form-control" id="inputPassword">
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="inputCheck">
+                    <label class="form-check-label" for="inputCheck">Recuérdame</label>
+                </div>
+                <div class="form-group">
+                    <re-captcha (resolved)="resolved($event)" (error)="onError($event)" errorMode="handled" siteKey="6LdY3g4bAAAAAAILfMJwbcMN9oCexnR0JPgle_yt"></re-captcha>
+                </div>
+                <button type="button" class="btn btn-primary">ACCEDER</button>
+            </form>
+        </div>
+    </div>
+</div>
