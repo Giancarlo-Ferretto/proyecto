@@ -18,14 +18,14 @@ export class RegisterComponent implements OnInit {
 
   constructor(private formBuilder:FormBuilder, private authService:AuthService, private router:Router) {
     this.registerForm = this.formBuilder.group({
-      name: new FormControl('', [Validators.required]),
-      lastname: new FormControl('', [Validators.required]),
+      name: new FormControl('', [Validators.required, Validators.maxLength(150)]),
+      lastname: new FormControl('', [Validators.required, Validators.maxLength(150)]),
       rut: new FormControl('', [Validators.required]),
-      address: new FormControl('', [Validators.required]),
-      region: new FormControl('', [Validators.required]),
-      city: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required]),
+      address: new FormControl('', [Validators.required, Validators.maxLength(150)]),
+      region: new FormControl('', [Validators.required, Validators.maxLength(150)]),
+      city: new FormControl('', [Validators.required, Validators.maxLength(150)]),
+      email: new FormControl('', [Validators.required, Validators.email, Validators.maxLength(150)]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(150)]),
       confirmPassword: new FormControl('', [Validators.required])
     })
   }
