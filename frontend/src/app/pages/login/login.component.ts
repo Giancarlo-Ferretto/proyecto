@@ -15,9 +15,11 @@ export class LoginComponent implements OnInit {
   
   constructor(private formBuilder:FormBuilder, private authService:AuthService, private router:Router) {
     this.loginForm = this.formBuilder.group({
-      email:['',[Validators.required, Validators.email]],
-      password:['',[Validators.required]]
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required]),
+      recaptcha: new FormControl('', [Validators.required]) 
     });
+    this.authService.logout();
   }
 
   ngOnInit(): void {
@@ -37,7 +39,7 @@ export class LoginComponent implements OnInit {
     this.authService.login({email:this.loginForm.get('email')?.value, password:this.loginForm.get('password')?.value})
     .subscribe((data:any) => {
       this.authService.storeToken(data);
-      this.router.navigate(['home']);
+      this.router.navigate(['']);
     },
     (error:any) => {
       this.authService.eraseToken();
