@@ -4,13 +4,16 @@
           <a class="navbar-brand" [routerLink]="['/']">Proyecto</a>
           <ul *ngIf="this.authService.isLoggedIn()" class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/']">Home</a>
+              <a class="nav-link" [routerLink]="['/']">Inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/']">Team</a>
+              <a class="nav-link" [routerLink]="['/']">Solicitudes abiertas</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/']">Projects</a>
+              <a class="nav-link" [routerLink]="['/']">Solicitudes en proceso</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/']">Solicitudes cerradas</a>
             </li>
           </ul>
           <ul *ngIf="this.authService.isLoggedIn()" class="navbar-nav me-auto mb-2 mb-lg-0">
