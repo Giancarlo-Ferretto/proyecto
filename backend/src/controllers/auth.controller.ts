@@ -9,10 +9,9 @@ export const signIn = async (req:any, res:any) => {
     try {
         connection.query("SELECT id, email, password FROM users WHERE email = ? LIMIT 1", [req.body.email], async (error:any, results:any) => {
             if (error) throw error;
-            if (!results.length) return res.status(400).json({message: "El correo electrónico no está registrado."});
+            if (!results.length) return res.status(400).json({message: "¡El correo que has introducido no está registrado!"});
             const matchPassword = await passwordEncryptor.comparePassword(req.body.password, results[0].password);
-            if (matchPassword == false) return res.status(401).json({token: null, message:"La contraseña ingresada es incorrecta."});
-            
+            if (matchPassword == false) return res.status(401).json({token: null, message:"¡La contraseña que has introducido es incorrecta!"});
             const selectedUser:User = results[0];
             if (process.env.API_KEY) {
                 const token = jwt.sign({id: selectedUser.id}, process.env.API_KEY, {
