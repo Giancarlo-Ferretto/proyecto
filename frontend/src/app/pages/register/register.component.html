@@ -4,54 +4,69 @@
             Registro
         </div>
         <div class="card-body">
-            <form>
+            <alert *ngIf="failedRegister" type="danger" [dismissible]="true"> 
+                {{failedMessage}}
+            </alert>
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Nombres</label>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" formControlName="name">
                     </div>
                     <div class="form-group col-md-6">
                         <label>Apellidos</label>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" formControlName="lastname">
                     </div>
                 </div>
                 <div class="form-group">
                     <label>RUT</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" formControlName="rut">
+                    <small *ngIf="rutValidator().invalid" class="form-text form-validator">
+                        Debes introducir un RUT válido sin puntos y con guión.
+                    </small>
                 </div>
                 <div class="form-group">
                     <label>Dirección de residencia</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" formControlName="address">
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Región</label>
-                        <select class="form-control form-control-sm">
-                            <option>Selecciona tu región</option>
+                        <select class="form-control form-control-sm" formControlName="region">
+                            <option [selected]="true">Selecciona tu región</option>
+                            <option>Valparaíso</option>
                         </select>
                     </div>
                     <div class="form-group col-md-6">
                         <label>Comuna</label>
-                        <select class="form-control form-control-sm">
-                            <option>Selecciona tu comuna</option>
+                        <select class="form-control form-control-sm" formControlName="city">
+                            <option [selected]="true">Selecciona tu comuna</option>
+                            <option>Viña del Mar</option>
+                            <option>Villa Alemana</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
                     <label>Correo electrónico</label>
-                    <input type="email" class="form-control">
+                    <input type="email" class="form-control" formControlName="email">
+                    <small *ngIf="registerForm.get('email')?.errors?.email" class="form-text form-validator">
+                        Debes introducir un correo electrónico válido.
+                    </small>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Contraseña</label>
-                        <input type="password" class="form-control">
+                        <input type="password" class="form-control" formControlName="password">
+                        <small *ngIf="passwordValidator().mismatch" class="form-text form-validator">
+                            Las contraseñas no coindicen.
+                        </small>
                     </div>
                     <div class="form-group col-md-6">
                         <label>Confirmar contraseña</label>
-                        <input type="password" class="form-control">
-                    </div>
-                </div>
-                <button type="button" class="btn btn-primary">REGISTRARME</button>
+                        <input type="password" class="form-control" formControlName="confirmPassword">
+                    </div>  
+                </div>      
+                <button type="submit" [disabled]="registerForm.invalid || rutValidator().invalid || passwordValidator().mismatch" class="btn btn-primary">REGISTRARME</button>
             </form>
         </div>
     </div>

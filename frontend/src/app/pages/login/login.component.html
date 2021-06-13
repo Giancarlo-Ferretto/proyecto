@@ -5,15 +5,15 @@
         </div>
         <div class="card-body">
             <alert *ngIf="failedLogin" type="danger" [dismissible]="true"> 
-                ¡El correo y/o la contraseña que has escrito son incorrectos!
+                {{failedMessage}}
             </alert>
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
                 <div class="form-group">
                     <label>Correo electrónico</label>
                     <input type="email" class="form-control" formControlName="email">
-                    <div *ngIf="loginForm.get('email')?.errors?.email" class="form-validator">
+                    <small *ngIf="loginForm.get('email')?.errors?.email" class="form-text form-validator">
                         Por favor, introduce un correo electrónico válido.
-                    </div>
+                    </small>
                 </div>
                 <div class="form-group">
                     <label>Contraseña</label>

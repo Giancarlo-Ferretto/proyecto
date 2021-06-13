@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
+import { User } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,10 @@ export class AuthService {
 
   constructor(private http:HttpClient, private jwtHelper:JwtHelperService, private router:Router) {
     this.localStorageService = localStorage;
+  }
+
+  register(user:User) {
+    return this.http.post(`${environment.API_URL}auth/signup`, user);
   }
 
   login(credentials:any) {

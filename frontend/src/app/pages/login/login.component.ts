@@ -12,7 +12,8 @@ import { AuthService } from '../../auth/auth.service';
 export class LoginComponent implements OnInit {
   loginForm:FormGroup;
   failedLogin:boolean = false;
-  
+  failedMessage:string = "";
+
   constructor(private formBuilder:FormBuilder, private authService:AuthService, private router:Router) {
     this.loginForm = this.formBuilder.group({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -44,6 +45,7 @@ export class LoginComponent implements OnInit {
     (error:any) => {
       this.authService.eraseToken();
       this.failedLogin = true;
+      this.failedMessage = error.error.message;
       console.log(error);
     }
     );
