@@ -48,3 +48,13 @@ export const signUp = async (req:any, res:any) => {
         return res.status(500).json(error);
     }
 }
+
+export const getProfile = async (req:any, res:any) => {
+    const profileId = req.userId;
+
+    console.log("profileId by jwt: " + profileId);
+
+    return connection.query("SELECT * FROM users WHERE ID = ?", [profileId], (req_:any, results:any) => {
+        res.status(200).send(results);
+    });
+}
