@@ -11,35 +11,35 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Nombres</label>
-                        <input type="text" class="form-control" formControlName="name">
+                        <input type="text" class="form-control" formControlName="name" maxlength="150">
                     </div>
                     <div class="form-group col-md-6">
                         <label>Apellidos</label>
-                        <input type="text" class="form-control" formControlName="lastname">
+                        <input type="text" class="form-control" formControlName="lastname" maxlength="150">
                     </div>
                 </div>
                 <div class="form-group">
                     <label>RUT</label>
-                    <input type="text" class="form-control" formControlName="rut">
+                    <input type="text" class="form-control" formControlName="rut" maxlength="150">
                     <small *ngIf="rutValidator().invalid" class="form-text form-validator">
                         Debes introducir un RUT válido sin puntos y con guión.
                     </small>
                 </div>
                 <div class="form-group">
                     <label>Dirección de residencia</label>
-                    <input type="text" class="form-control" formControlName="address">
+                    <input type="text" class="form-control" formControlName="address" maxlength="150">
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Región</label>
-                        <select class="form-control form-control-sm" formControlName="region">
+                        <select class="form-control form-control-sm" formControlName="region" maxlength="150">
                             <option [selected]="true">Selecciona tu región</option>
                             <option>Valparaíso</option>
                         </select>
                     </div>
                     <div class="form-group col-md-6">
                         <label>Comuna</label>
-                        <select class="form-control form-control-sm" formControlName="city">
+                        <select class="form-control form-control-sm" formControlName="city" maxlength="150">
                             <option [selected]="true">Selecciona tu comuna</option>
                             <option>Viña del Mar</option>
                             <option>Villa Alemana</option>
@@ -48,7 +48,7 @@
                 </div>
                 <div class="form-group">
                     <label>Correo electrónico</label>
-                    <input type="email" class="form-control" formControlName="email">
+                    <input type="email" class="form-control" formControlName="email" maxlength="150">
                     <small *ngIf="registerForm.get('email')?.errors?.email" class="form-text form-validator">
                         Debes introducir un correo electrónico válido.
                     </small>
@@ -56,14 +56,17 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Contraseña</label>
-                        <input type="password" class="form-control" formControlName="password">
+                        <input type="password" class="form-control" formControlName="password" maxlength="150">
+                        <small *ngIf="registerForm.get('password')?.errors?.minlength" class="form-text form-validator">
+                            La contraseña debe tener 6 caracteres como mínimo.
+                        </small>
                         <small *ngIf="passwordValidator().mismatch" class="form-text form-validator">
                             Las contraseñas no coindicen.
                         </small>
                     </div>
                     <div class="form-group col-md-6">
                         <label>Confirmar contraseña</label>
-                        <input type="password" class="form-control" formControlName="confirmPassword">
+                        <input type="password" class="form-control" formControlName="confirmPassword" maxlength="150">
                     </div>  
                 </div>      
                 <button type="submit" [disabled]="registerForm.invalid || rutValidator().invalid || passwordValidator().mismatch" class="btn btn-primary">REGISTRARME</button>
