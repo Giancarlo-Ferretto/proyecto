@@ -45,4 +45,4 @@ testem.log
 Thumbs.db
 
 # prod env
-frontend/src/environments/environment.prod.ts
+src/environments/environment.prod.ts
