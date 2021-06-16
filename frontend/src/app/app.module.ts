@@ -25,6 +25,7 @@ import { ClosedTicketsComponent } from './pages/tickets/closed-tickets/closed-ti
 import { PendingTicketsComponent } from './pages/tickets/pending-tickets/pending-tickets.component';
 import { TicketComponent } from './pages/ticket/ticket.component';
 import { AllTicketsComponent } from './pages/tickets/all-tickets/all-tickets.component';
+import { NewTicketComponent } from './pages/ticket/new-ticket/new-ticket.component';
 
 export function tokenGetter() {
   return localStorage.getItem("access-token");
@@ -42,7 +43,8 @@ export function tokenGetter() {
     ClosedTicketsComponent,
     PendingTicketsComponent,
     TicketComponent,
-    AllTicketsComponent
+    AllTicketsComponent,
+    NewTicketComponent
   ],
   imports: [
     BrowserModule,

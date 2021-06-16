@@ -1,0 +1,27 @@
+@import "styles.scss";
+
+.container {
+    margin-top: 2%;
+}
+
+.doc-header {
+    background-color: $header-bg;
+    color: $header-color;
+}
+
+.doc-component {
+    background-color: $component-bg;
+    color: $component-color;
+}
+
+.card {
+    margin-top: 2%;
+}
+
+.card-body .btn {
+    width: 100%;
+}
+
+.form-validator {
+    color: #dc3545;
+}

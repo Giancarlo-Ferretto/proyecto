@@ -8,14 +8,15 @@ import { OpenTicketsComponent } from './pages/tickets/open-tickets/open-tickets.
 import { PendingTicketsComponent } from './pages/tickets/pending-tickets/pending-tickets.component';
 import { ClosedTicketsComponent } from './pages/tickets/closed-tickets/closed-tickets.component';
 import { TicketComponent } from './pages/ticket/ticket.component';
+import { NewTicketComponent } from './pages/ticket/new-ticket/new-ticket.component';
 import { AllTicketsComponent } from './pages/tickets/all-tickets/all-tickets.component';
 
 const routes: Routes = [
   {path:"login", component:LoginComponent},
   {path:"register", component:RegisterComponent},
   {path:"", component:HomeComponent, canActivate: [AuthGuard]},
-  {path:"ticket/:id", component:TicketComponent, canActivate: [AuthGuard]},
-  //{path:"ticket/nuevo", component:OpenTicketsComponent, canActivate: [AuthGuard]},
+  {path:"ticket/:id/ver", component:TicketComponent, canActivate: [AuthGuard]},
+  {path:"ticket/nuevo", component:NewTicketComponent, canActivate: [AuthGuard]},
   {path:"tickets/abiertos", component:OpenTicketsComponent, canActivate: [AuthGuard]},
   {path:"tickets/enproceso", component:PendingTicketsComponent, canActivate: [AuthGuard]},
   {path:"tickets/cerrados", component:ClosedTicketsComponent, canActivate: [AuthGuard]},
