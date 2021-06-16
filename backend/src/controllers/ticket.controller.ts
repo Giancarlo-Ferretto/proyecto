@@ -11,7 +11,7 @@ export function createTicket(req:any, res:any) {
 }
 
 export function getTickets(req:any, res:any) {
-    return connection.query("SELECT * FROM tickets", (req_:any, results:any) => {
+    return connection.query("SELECT * FROM tickets ORDER BY creationDate", (req_:any, results:any) => {
         res.status(200).send(results);
     });
 }
@@ -25,7 +25,7 @@ export function getTicketById(req:any, res:any) {
 
 export function getTicketByUserId(req:any, res:any) {
     let id = req.params.id;
-    return connection.query("SELECT * FROM tickets WHERE userId = ?", [id], (req_:any, results:any) => {
+    return connection.query("SELECT * FROM tickets WHERE userId = ? ORDER BY creationDate", [id], (req_:any, results:any) => {
         res.status(200).send(results);
     });
 }
