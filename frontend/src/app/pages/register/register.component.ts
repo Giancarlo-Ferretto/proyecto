@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
 import { User } from '../../interfaces/user';
+import { LocationService } from '../../services/location.service';
 import * as rutValidator from './utils/rutValidator';
 
 @Component({
@@ -14,8 +15,10 @@ export class RegisterComponent implements OnInit {
   registerForm:FormGroup;
   failedRegister:boolean = false;
   failedMessage:string = "";
+  regiones:Array<any>=[];
+  comunas:Array<any>=[];
 
-  constructor(private formBuilder:FormBuilder, private authService:AuthService, private router:Router) {
+  constructor(private formBuilder:FormBuilder, private authService:AuthService, private locationService:LocationService, private router:Router) {
     this.registerForm = this.formBuilder.group({
       name: new FormControl('', [Validators.required, Validators.maxLength(150)]),
       lastname: new FormControl('', [Validators.required, Validators.maxLength(150)]),
@@ -42,6 +45,26 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.registerForm.get('region')?.disable();
+    this.registerForm.get('city')?.disable();
+    this.locationService.getRegiones().subscribe((data:any) => {
+      this.regiones = data;
+      this.registerForm.get('region')?.enable();
+    });
+  }
+
+  onRegionChange(region:string) {
+    this.comunas = [];
+    this.registerForm.get('city')?.disable();
+    this.regiones.forEach((data:any) => {
+      if(data.nombre === region)
+      {
+        this.locationService.getComunas(data.codigo).subscribe((data:any) => {
+          this.comunas = data;
+          this.registerForm.get('city')?.enable();
+        });
+      }
+    });
   }
 
   onSubmit() {
