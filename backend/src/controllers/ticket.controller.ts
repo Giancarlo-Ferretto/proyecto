@@ -35,7 +35,6 @@ export function getTicketByStatusUserId(req:any, res:any) {
     let status:string = req.params.status;
     return connection.query("SELECT * FROM tickets WHERE status = ? AND userId = ? ORDER BY creationDate", [status, id], (req_:any, results:any) => {
         res.status(200).send(results);
-        console.log(results);
     });
 }
 
