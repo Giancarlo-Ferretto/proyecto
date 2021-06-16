@@ -1,6 +1,4 @@
 import jwt from "jsonwebtoken";
-import { User } from "../models/user";
-import { getUserById } from "../controllers/user.controller";
 import connection from "../database";
 require('dotenv').config();
 
