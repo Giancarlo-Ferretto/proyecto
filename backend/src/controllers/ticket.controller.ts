@@ -6,7 +6,7 @@ export function createTicket(req:any, res:any) {
 
     return connection.query("INSERT INTO tickets SET ?", [newTicket], function (error:any, results:any, fields:any) {
         if (error) throw error;
-        res.status(201).send(`Ticket insertado con el id:${results.insertId}!`);
+        res.status(201).send(results);
     });
 }
 
