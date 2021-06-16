@@ -4,6 +4,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { User } from '../interfaces/user';
+import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -29,11 +31,15 @@ export class AuthService {
   }
 
   storeToken(data:any) {
-    this.localStorageService.setItem('access-token', JSON.stringify(data.token));
+    this.localStorageService.setItem('access-token', data.token);
   }
 
   eraseToken() {
     this.localStorageService.removeItem('access-token');
+  }
+
+  getToken():string {
+    return this.localStorageService.getItem('access-token') || "{}";
   }
 
   isLoggedIn() {
@@ -48,5 +54,9 @@ export class AuthService {
       }
     }
     return false;
+  }
+
+  getProfile(): Observable<User> {
+    return this.http.get<User>(`${environment.API_URL}auth/profile`); 
   }
 }
