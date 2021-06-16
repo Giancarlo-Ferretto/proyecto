@@ -4,16 +4,16 @@
           <a class="navbar-brand" [routerLink]="['/']">Proyecto</a>
           <ul *ngIf="isLoggedIn()" class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/']">Inicio</a>
+              <a class="nav-link" [routerLink]="['/tickets/abiertos']" routerLinkActive="active">Solicitudes abiertas</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/']">Solicitudes abiertas</a>
+              <a class="nav-link" [routerLink]="['/tickets/enproceso']" routerLinkActive="active">Solicitudes en proceso</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/']">Solicitudes en proceso</a>
+              <a class="nav-link" [routerLink]="['/tickets/cerrados']" routerLinkActive="active">Solicitudes cerradas</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/']">Solicitudes cerradas</a>
+              <a class="nav-link" [routerLink]="['/tickets/historico']" routerLinkActive="active">Histórico de solicitudes</a>
             </li>
           </ul>
           <ul *ngIf="isLoggedIn()" class="navbar-nav me-auto mb-2 mb-lg-0">

@@ -26,6 +26,10 @@ export class TicketsService {
     return this.http.get<Ticket[]>(`${environment.API_URL}tickets/${userId}/user`);
   }
 
+  getTicketsByStatusUserId(status:string, userId:number) {
+    return this.http.get<Ticket[]>(`${environment.API_URL}tickets/${userId}/user/${status}/status`);
+  }
+
   updateTicketById(ticket:Ticket) {
     return this.http.put(`${environment.API_URL}tickets/${ticket.ID}`, ticket);
   }

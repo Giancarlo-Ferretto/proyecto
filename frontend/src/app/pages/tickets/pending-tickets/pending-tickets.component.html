@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="doc-header d-flex align-items-center p-3 my-3 rounded shadow-sm">
+        <div class="lh-1">
+            <h1 class="h3">Mis solicitudes en proceso</h1>
+            <small>
+                Las solicitudes en proceso fueron atendidas por el administrador del sitio, pero aún no han sido resueltas.
+            </small>
+        </div>
+    </div>
+    <div class="doc-component my-3 p-3 bg-body rounded shadow-sm">
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Prioridad</th>
+                <th scope="col">Categoría</th>
+                <th scope="col">Asunto</th>
+                <th scope="col">Fecha de creación</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of pageList">
+                <td>{{item.ID}}</td>
+                <td>
+                    <span *ngIf="item.priority === 'Alta'" class="badge bg-danger text-white">{{item.priority}}</span>
+                    <span *ngIf="item.priority === 'Media'" class="badge bg-warning text-white">{{item.priority}}</span>
+                    <span *ngIf="item.priority === 'Baja'" class="badge bg-secondary text-white">{{item.priority}}</span>
+                </td>
+                <td>{{item.category}}</td>
+                <td>{{item.subject}}</td>
+                <td>{{item.creationDate}}</td>
+                <td>
+                    <button type="button" class="btn btn-secondary" [routerLink]="['/ticket', item.ID]"><i class="bi bi-search"></i> Revisar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <pagination [totalItems]="list.length" (pageChanged)="pageChanged($event)"></pagination>
+    </div>
+</div>

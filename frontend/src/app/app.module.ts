@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule, JwtModuleOptions } from '@auth0/angular-jwt';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -8,6 +9,7 @@ import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +20,11 @@ import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AuthGuard } from './auth/auth.guard';
 import { TokenInterceptor } from './services/token.interceptor';
+import { OpenTicketsComponent } from './pages/tickets/open-tickets/open-tickets.component';
+import { ClosedTicketsComponent } from './pages/tickets/closed-tickets/closed-tickets.component';
+import { PendingTicketsComponent } from './pages/tickets/pending-tickets/pending-tickets.component';
+import { TicketComponent } from './pages/ticket/ticket.component';
+import { AllTicketsComponent } from './pages/tickets/all-tickets/all-tickets.component';
 
 export function tokenGetter() {
   return localStorage.getItem("access-token");
@@ -30,7 +37,12 @@ export function tokenGetter() {
     HeaderComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    OpenTicketsComponent,
+    ClosedTicketsComponent,
+    PendingTicketsComponent,
+    TicketComponent,
+    AllTicketsComponent
   ],
   imports: [
     BrowserModule,
@@ -48,9 +60,11 @@ export function tokenGetter() {
     RecaptchaFormsModule,
     CollapseModule,
     AlertModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    PaginationModule.forRoot()
   ],
   providers: [
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
     AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
