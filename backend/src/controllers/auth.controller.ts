@@ -17,7 +17,7 @@ export const signIn = async (req:any, res:any) => {
                 const token = jwt.sign({id: selectedUser.id}, process.env.API_KEY, {
                     expiresIn: 86400,
                 });
-                res.json({token});
+                res.status(200).json({token});
             }
         });
     }
