@@ -7,6 +7,7 @@ import * as checkToken from '../middlewares/checkToken';
 router.post('/', [checkToken.checkToken], ticketController.createTicket);
 router.get('/', [checkToken.checkToken, checkToken.isAdmin], ticketController.getTickets);
 router.get('/:id', [checkToken.checkToken], ticketController.getTicketById);
+router.get('/:id/user', [checkToken.checkToken], ticketController.getTicketByUserId);
 router.put('/:id', [checkToken.checkToken, checkToken.isAdmin], ticketController.updateTicketById);
 router.delete('/:id', [checkToken.checkToken, checkToken.isAdmin], ticketController.deleteTicketById);
 

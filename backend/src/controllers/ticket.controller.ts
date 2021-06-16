@@ -23,6 +23,13 @@ export function getTicketById(req:any, res:any) {
     });
 }
 
+export function getTicketByUserId(req:any, res:any) {
+    let id = req.params.id;
+    return connection.query("SELECT * FROM tickets WHERE userId = ?", [id], (req_:any, results:any) => {
+        res.status(200).send(results);
+    });
+}
+
 export function updateTicketById(req:any, res:any) {
     let id = req.params.id;
     const updatedTicket:Ticket = req.body;
