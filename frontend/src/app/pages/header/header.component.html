@@ -2,7 +2,7 @@
     <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
         <div class="container-fluid">
           <a class="navbar-brand" [routerLink]="['/']">Proyecto</a>
-          <ul *ngIf="this.authService.isLoggedIn()" class="navbar-nav mr-auto">
+          <ul *ngIf="isLoggedIn()" class="navbar-nav mr-auto">
             <li class="nav-item">
               <a class="nav-link" [routerLink]="['/']">Inicio</a>
             </li>
@@ -16,12 +16,12 @@
               <a class="nav-link" [routerLink]="['/']">Solicitudes cerradas</a>
             </li>
           </ul>
-          <ul *ngIf="this.authService.isLoggedIn()" class="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul *ngIf="isLoggedIn()" class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/login']" (click)="this.authService.logout()">DESCONECTARSE</a>
+              <a class="nav-link" [routerLink]="['/login']" (click)="logout()">DESCONECTARSE</a>
             </li>
           </ul>
-          <ul *ngIf="!this.authService.isLoggedIn()" class="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul *ngIf="!isLoggedIn()" class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active">ACCEDER</a>
             </li>

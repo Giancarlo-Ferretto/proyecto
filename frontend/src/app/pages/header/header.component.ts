@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../auth/auth.service';
+import { User } from '../../interfaces/user';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,19 @@ import { AuthService } from '../../auth/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  constructor(public authService:AuthService) { }
+  profile:User = {name:"", lastname:"", password:"", email:"", rut:"", address:"", region:"", city:""};
+
+  constructor(private authService:AuthService) { }
 
   ngOnInit(): void {
+    this.authService.getProfile().subscribe(profileData => this.profile = profileData);
   }
 
+  isLoggedIn() {
+    return this.authService.isLoggedIn();
+  }
+
+  logout() {
+    this.authService.logout();
+  }
 }
