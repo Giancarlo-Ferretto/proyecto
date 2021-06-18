@@ -1,1 +1,22 @@
-<p>ticket works!</p>
+<div class="container">
+    <div class="doc-header d-flex align-items-center p-3 my-3 rounded shadow-sm">
+        <div class="lh-1">
+            <h1 class="h5">
+                <span *ngIf="this.ticket.priority === 'Alta'" class="badge bg-danger text-white">{{this.ticket.priority}}</span>
+                <span *ngIf="this.ticket.priority === 'Media'" class="badge bg-warning text-white">{{this.ticket.priority}}</span>
+                <span *ngIf="this.ticket.priority === 'Baja'" class="badge bg-secondary text-white">{{this.ticket.priority}}</span>
+                Solicitud #{{this.ticket.ID}}
+            </h1>
+        </div>
+    </div>
+    <div class="doc-component my-3 p-3 bg-body rounded shadow-sm">
+        <h6>Categoría</h6>
+        <p>{{this.ticket.category}}</p> 
+        <h6>Estado</h6>
+        <p>{{this.ticket.status}}</p> 
+        <h6>Asunto</h6>
+        <p>{{this.ticket.subject}}</p> 
+        <h6>Descripción</h6>
+        <p>{{this.ticket.description}}</p> 
+    </div>
+</div>

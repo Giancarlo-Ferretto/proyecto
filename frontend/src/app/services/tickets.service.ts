@@ -19,7 +19,7 @@ export class TicketsService {
   }
 
   getTicketById(ticketId:number) {
-    return this.http.get(`${environment.API_URL}tickets/${ticketId}`);
+    return this.http.get<Ticket>(`${environment.API_URL}tickets/${ticketId}`);
   }
 
   getTicketsByUserId(userId:number) {
