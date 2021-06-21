@@ -12,7 +12,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class AuthService {
   private localStorageService;
-
+  
   constructor(private http:HttpClient, private jwtHelper:JwtHelperService, private router:Router) {
     this.localStorageService = localStorage;
   }
@@ -54,6 +54,10 @@ export class AuthService {
       }
     }
     return false;
+  }
+
+  isAdmin(user:User) {
+    return user.isAdmin;
   }
 
   getProfile(): Observable<User> {
