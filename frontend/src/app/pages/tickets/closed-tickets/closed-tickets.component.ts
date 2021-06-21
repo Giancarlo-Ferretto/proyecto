@@ -4,6 +4,7 @@ import { TicketsService } from '../../../services/tickets.service';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { User } from '../../../interfaces/user';
 import { AuthService } from '../../../auth/auth.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-closed-tickets',
@@ -15,11 +16,11 @@ export class ClosedTicketsComponent implements OnInit {
   list:Array<Ticket>=[];
   pageList:Array<Ticket>=[];
 
-  constructor(private authService:AuthService, private ticketsService:TicketsService) { }
+  constructor(private authService:AuthService, private ticketsService:TicketsService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.authService.getProfile().subscribe(profileData => {
-      this.profile = profileData;
+    this.route.data.subscribe(data => {
+      this.profile = data.profile
       this.loadTickets();
     });
   }

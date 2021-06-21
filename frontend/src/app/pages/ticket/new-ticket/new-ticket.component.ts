@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TicketsService } from '../../../services/tickets.service';
 import { Ticket } from '../../../interfaces/ticket';
 import { AuthService } from '../../../auth/auth.service';
@@ -15,7 +15,7 @@ export class NewTicketComponent implements OnInit {
   ticketForm:FormGroup;
   profile:User = {name:"", lastname:"", password:"", email:"", rut:"", address:"", region:"", city:""};
 
-  constructor(private formBuilder:FormBuilder, private authService:AuthService, private ticketService:TicketsService, private router:Router) {
+  constructor(private formBuilder:FormBuilder, private authService:AuthService, private ticketService:TicketsService, private route: ActivatedRoute, private router:Router) {
     this.ticketForm = this.formBuilder.group({
       priority:['', [Validators.required, Validators.maxLength(150)]],
       category:['', [Validators.required, Validators.maxLength(150)]],
@@ -25,9 +25,7 @@ export class NewTicketComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authService.getProfile().subscribe(profileData => {
-      this.profile = profileData;
-    });
+    this.route.data.subscribe(data => this.profile = data.profile);
   }
 
   onSubmit() {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../auth/auth.service';
+import { ActivatedRoute } from '@angular/router';
 import { User } from '../../interfaces/user';
 
 @Component({
@@ -10,9 +10,9 @@ import { User } from '../../interfaces/user';
 export class HomeComponent implements OnInit {
   profile:User = {name:"", lastname:"", password:"", email:"", rut:"", address:"", region:"", city:""};
 
-  constructor(private authService:AuthService) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.authService.getProfile().subscribe(profileData => this.profile = profileData);
+    this.route.data.subscribe(data => this.profile = data.profile);
   }
 }
