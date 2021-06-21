@@ -15,4 +15,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.route.data.subscribe(data => this.profile = data.profile);
   }
+
+  isAdmin() {
+    return this.profile.isAdmin;
+  }
 }
