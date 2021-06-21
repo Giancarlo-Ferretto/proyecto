@@ -26,6 +26,8 @@ import { PendingTicketsComponent } from './pages/tickets/pending-tickets/pending
 import { TicketComponent } from './pages/ticket/ticket.component';
 import { AllTicketsComponent } from './pages/tickets/all-tickets/all-tickets.component';
 import { NewTicketComponent } from './pages/ticket/new-ticket/new-ticket.component';
+import { AdminGuard } from './admin/admin.guard';
+import { UsersComponent } from './admin/users/users.component';
 
 export function tokenGetter() {
   return localStorage.getItem("access-token");
@@ -44,7 +46,8 @@ export function tokenGetter() {
     PendingTicketsComponent,
     TicketComponent,
     AllTicketsComponent,
-    NewTicketComponent
+    NewTicketComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
@@ -68,11 +71,8 @@ export function tokenGetter() {
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
     AuthGuard,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true
-    }
+    AdminGuard,
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

@@ -11,7 +11,7 @@ import { ClosedTicketsComponent } from './pages/tickets/closed-tickets/closed-ti
 import { TicketComponent } from './pages/ticket/ticket.component';
 import { NewTicketComponent } from './pages/ticket/new-ticket/new-ticket.component';
 import { AllTicketsComponent } from './pages/tickets/all-tickets/all-tickets.component';
-import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { UsersComponent } from './admin/users/users.component';
 import { AdminGuard } from './admin/admin.guard';
 
 const routes: Routes = [
@@ -24,8 +24,7 @@ const routes: Routes = [
   {path:"tickets/enproceso", component:PendingTicketsComponent, canActivate: [AuthGuard], resolve: {profile: ProfileResolver}},
   {path:"tickets/cerrados", component:ClosedTicketsComponent, canActivate: [AuthGuard], resolve: {profile: ProfileResolver}},
   {path:"tickets/historico", component:AllTicketsComponent, canActivate: [AuthGuard], resolve: {profile: ProfileResolver}},
-  {path:"admin", component:DashboardComponent, canActivate: [AuthGuard, AdminGuard]}
-
+  {path:"admin/usuarios", component:UsersComponent, canActivate: [AuthGuard, AdminGuard]},
 ];
 
 @NgModule({

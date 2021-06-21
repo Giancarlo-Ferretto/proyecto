@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="doc-header d-flex align-items-center p-3 my-3 rounded shadow-sm">
+        <div class="lh-1">
+            <h1 class="h3">Reporte de usuarios registrados</h1>
+            <small>
+                Lista de usuarios registrados en la aplicación.
+            </small>
+        </div>
+    </div>
+    <div class="doc-component my-3 p-3 bg-body rounded shadow-sm">
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre completo</th>
+                <th scope="col">RUT</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Dirección</th>
+                <th scope="col">Rol</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of pageList">
+                <td>{{item.ID}}</td>
+                <td>{{item.name}} {{item.lastname}}</td>
+                <td>{{item.rut}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.address}}, {{item.city}}, {{item.region}}</td>
+                <td>
+                    <span *ngIf="item.isAdmin == 1" class="badge bg-danger text-white">Administrador</span>
+                    <span *ngIf="item.isAdmin == 0" class="badge bg-secondary text-white">Cliente</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <pagination [totalItems]="list.length" (pageChanged)="pageChanged($event)"></pagination>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+@import "styles.scss";
+
+.container {
+    margin-top: 2%;
+}
+
+.doc-header {
+    background-color: $header-bg;
+    color: $header-color;
+}
+
+.doc-component {
+    background-color: $component-bg;
+    color: $component-color;
+}
