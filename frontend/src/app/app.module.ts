@@ -28,6 +28,7 @@ import { AllTicketsComponent } from './pages/tickets/all-tickets/all-tickets.com
 import { NewTicketComponent } from './pages/ticket/new-ticket/new-ticket.component';
 import { AdminGuard } from './admin/admin.guard';
 import { UsersComponent } from './admin/users/users.component';
+import { TicketsComponent } from './admin/tickets/tickets.component';
 
 export function tokenGetter() {
   return localStorage.getItem("access-token");
@@ -47,7 +48,8 @@ export function tokenGetter() {
     TicketComponent,
     AllTicketsComponent,
     NewTicketComponent,
-    UsersComponent
+    UsersComponent,
+    TicketsComponent
   ],
   imports: [
     BrowserModule,

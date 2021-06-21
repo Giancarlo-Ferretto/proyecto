@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="doc-header d-flex align-items-center p-3 my-3 rounded shadow-sm">
+        <div class="lh-1">
+            <h1 class="h3">Histórico de solicitudes</h1>
+            <small>
+                Lista histórica de solicitudes realizadas.
+            </small>
+        </div>
+    </div>
+    <div class="doc-component my-3 p-3 bg-body rounded shadow-sm">
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Prioridad</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Categoría</th>
+                <th scope="col">Asunto</th>
+                <th scope="col">Fecha de creación</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of pageList" [ngClass]="{'openticket': item.status === 'Abierto', 'pendingticket': item.status === 'En proceso', 'closedticket': item.status === 'Cerrado'}"  >
+                <td>{{item.ID}}</td>
+                <td>
+                    <span *ngIf="item.priority === 'Alta'" class="badge bg-danger text-white">{{item.priority}}</span>
+                    <span *ngIf="item.priority === 'Media'" class="badge bg-warning text-white">{{item.priority}}</span>
+                    <span *ngIf="item.priority === 'Baja'" class="badge bg-secondary text-white">{{item.priority}}</span>
+                </td>
+                <td>{{item.status}}</td>
+                <td>{{item.category}}</td>
+                <td>{{item.subject}}</td>
+                <td>{{item.creationDate}}</td>
+                <td>
+                    <button *ngIf="item.status === 'Abierto'" type="button" class="btn btn-primary" [routerLink]="['/ticket', item.ID, 'ver']"><i class="bi bi-reply"></i> Atender</button>
+                    <button *ngIf="item.status === 'En proceso'" type="button" class="btn btn-primary" [routerLink]="['/ticket', item.ID, 'ver']"><i class="bi bi-reply"></i> Responder</button>
+                    <button *ngIf="item.status === 'Cerrado'" type="button" class="btn btn-dark" [routerLink]="['/ticket', item.ID, 'ver']"><i class="bi bi-file-lock"></i> Revisar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <pagination [totalItems]="list.length" (pageChanged)="pageChanged($event)"></pagination>
+    </div>
+</div>

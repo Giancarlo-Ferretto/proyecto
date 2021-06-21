@@ -11,8 +11,9 @@ import { ClosedTicketsComponent } from './pages/tickets/closed-tickets/closed-ti
 import { TicketComponent } from './pages/ticket/ticket.component';
 import { NewTicketComponent } from './pages/ticket/new-ticket/new-ticket.component';
 import { AllTicketsComponent } from './pages/tickets/all-tickets/all-tickets.component';
-import { UsersComponent } from './admin/users/users.component';
 import { AdminGuard } from './admin/admin.guard';
+import { TicketsComponent } from './admin/tickets/tickets.component';
+import { UsersComponent } from './admin/users/users.component';
 
 const routes: Routes = [
   {path:"login", component:LoginComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path:"tickets/enproceso", component:PendingTicketsComponent, canActivate: [AuthGuard], resolve: {profile: ProfileResolver}},
   {path:"tickets/cerrados", component:ClosedTicketsComponent, canActivate: [AuthGuard], resolve: {profile: ProfileResolver}},
   {path:"tickets/historico", component:AllTicketsComponent, canActivate: [AuthGuard], resolve: {profile: ProfileResolver}},
+  {path:"admin/tickets", component:TicketsComponent, canActivate: [AuthGuard, AdminGuard]},
   {path:"admin/usuarios", component:UsersComponent, canActivate: [AuthGuard, AdminGuard]},
 ];
 
