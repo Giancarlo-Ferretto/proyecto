@@ -13,7 +13,6 @@ export class HeaderComponent implements OnInit {
   constructor(private authService:AuthService) { }
 
   ngOnInit(): void {
-    if(this.isLoggedIn()) this.authService.getProfile().subscribe(profileData => this.profile = profileData);
   }
 
   isLoggedIn() {

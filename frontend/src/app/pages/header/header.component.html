@@ -1,21 +1,7 @@
 <header>    
     <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
         <div class="container-fluid">
-          <a class="navbar-brand" [routerLink]="['/']">Proyecto</a>
-          <ul *ngIf="isLoggedIn()" class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/tickets/abiertos']" routerLinkActive="active">Solicitudes abiertas</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/tickets/enproceso']" routerLinkActive="active">Solicitudes en proceso</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/tickets/cerrados']" routerLinkActive="active">Solicitudes cerradas</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/tickets/historico']" routerLinkActive="active">Histórico de solicitudes</a>
-            </li>
-          </ul>
+          <a class="navbar-brand" [routerLink]="['/']">Servicio al Cliente</a>
           <ul *ngIf="isLoggedIn()" class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link" [routerLink]="['/login']" (click)="logout()">DESCONECTARSE</a>
