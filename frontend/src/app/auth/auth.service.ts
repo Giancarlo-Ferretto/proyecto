@@ -56,10 +56,6 @@ export class AuthService {
     return false;
   }
 
-  isAdmin(user:User) {
-    return user.isAdmin;
-  }
-
   getProfile(): Observable<User> {
     return this.http.get<User>(`${environment.API_URL}auth/profile`); 
   }
