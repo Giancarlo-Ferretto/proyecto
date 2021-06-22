@@ -6,7 +6,7 @@ export function createTicketReply(req:any, res:any) {
 
     connection.query("INSERT INTO ticketreplies SET ?", [newTicketReply], function (error:any, results:any, fields:any) {
         if (error) throw error;
-        res.status(201).send(`TicketReply insertado con el id:${results.insertId}!`);
+        res.status(201).send(results);
     });
 }
 
@@ -18,17 +18,17 @@ export function getTicketReplies(req:any, res:any) {
 
 export function getTicketRepliesByTicketId(req:any, res:any) {
     let id = req.params.id;
-    return connection.query("SELECT ticketreplies.*, users.name, users.lastname FROM ticketreplies JOIN users ON ticketreplies.userId = users.ID WHERE ticketId = ?", [id], (req_:any, results:any) => {
+    return connection.query("SELECT ticketreplies.*, users.name, users.lastname FROM ticketreplies JOIN users ON ticketreplies.userId = users.ID WHERE ticketId = ? ORDER BY replyDate", [id], (req_:any, results:any) => {
         res.status(200).send(results);
     });
 }
 
-/*export function getTicketReplyById(req:any, res:any) {
+export function getTicketReplyById(req:any, res:any) {
     let id = req.params.id;
-    return connection.query("SELECT * FROM ticketreplies WHERE ID = ?", [id], (req_:any, results:any) => {
-        res.status(200).send(results);
+    return connection.query("SELECT ticketreplies.*, users.name, users.lastname FROM ticketreplies JOIN users ON ticketreplies.userId = users.ID WHERE ticketreplies.ID = ?", [id], (req_:any, results:any) => {
+        res.status(200).send(results[0]);
     });
-}*/
+}
 
 export function updateTicketReplyById(req:any, res:any) {
     let id = req.params.id;
