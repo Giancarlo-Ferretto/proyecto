@@ -7,4 +7,6 @@ export interface Ticket {
     subject:string;
     description:string;
     creationDate?:string;
+    name?:string;
+    lastname?:string;
 }

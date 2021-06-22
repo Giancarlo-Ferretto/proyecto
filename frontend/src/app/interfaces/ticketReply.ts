@@ -4,4 +4,6 @@ export interface TicketReply {
     userId:number;
     reply:string;
     replyDate?:string;
+    name?:string;
+    lastname?:string;
 }
