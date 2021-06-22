@@ -39,11 +39,11 @@ export function getTicketByStatusUserId(req:any, res:any) {
 }
 
 export function updateTicketById(req:any, res:any) {
-    let id = req.params.id;
-    const updatedTicket:Ticket = req.body;
+    let id:number = req.params.id;
+    const updatedTicket:any = { status:req.body.status, priority:req.body.priority, category:req.body.category, subject:req.body.subject, description:req.body.description };
 
-    return connection.query("UPDATE tickets SET ? WHERE ID = ?", [updatedTicket, id], (req_:any, results:any) => {
-        res.status(204).send(results);
+    connection.query("UPDATE tickets SET ? WHERE ID = ?", [updatedTicket, id], (req_:any, results:any) => {
+        res.status(204).send(`Ticket actualizado!`);
     });
 }
 
