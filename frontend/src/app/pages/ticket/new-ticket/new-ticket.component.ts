@@ -40,7 +40,7 @@ export class NewTicketComponent implements OnInit {
 
     return this.ticketService.createTicket(ticket)
       .subscribe((data:any) => {
-        this.router.navigate(['/ticket', data.ID || 0, 'ver']);
+        this.router.navigate(['/ticket', data.insertId || 0, 'ver']);
       },
       (error:any) => {
         console.log(error.error);
