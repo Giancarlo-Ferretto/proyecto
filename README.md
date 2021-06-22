@@ -29,5 +29,19 @@ Entidades adicionales al modelo del caso de estudio, que tienen relevancia en la
 - Entidad comuna, son las comunas que posee una región, se le asignan los atributos nombre y región asociada.
 
 ## Base de datos
+...
 
-## Variables de entorno
+## Servidor backend
+...
+
+### Políticas de seguridad
+...
+
+## Servidor frontend
+...
+
+### Bootstrap
+...
+
+## Integrantes 
+Desarrollado por Giancarlo Ferretto.
