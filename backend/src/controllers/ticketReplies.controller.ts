@@ -4,7 +4,7 @@ import { TicketReply } from '../models/ticketReply';
 export function createTicketReply(req:any, res:any) {
     const newTicketReply:TicketReply = req.body;
 
-    return connection.query("INSERT INTO ticketreplies SET ?", [newTicketReply], function (error:any, results:any, fields:any) {
+    connection.query("INSERT INTO ticketreplies SET ?", [newTicketReply], function (error:any, results:any, fields:any) {
         if (error) throw error;
         res.status(201).send(`TicketReply insertado con el id:${results.insertId}!`);
     });
@@ -18,7 +18,7 @@ export function getTicketReplies(req:any, res:any) {
 
 export function getTicketRepliesByTicketId(req:any, res:any) {
     let id = req.params.id;
-    return connection.query("SELECT * FROM ticketreplies WHERE ticketId = ?", [id], (req_:any, results:any) => {
+    return connection.query("SELECT ticketreplies.*, users.name, users.lastname FROM ticketreplies JOIN users ON ticketreplies.userId = users.ID WHERE ticketId = ?", [id], (req_:any, results:any) => {
         res.status(200).send(results);
     });
 }

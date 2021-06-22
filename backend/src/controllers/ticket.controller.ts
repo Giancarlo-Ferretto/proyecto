@@ -18,7 +18,7 @@ export function getTickets(req:any, res:any) {
 
 export function getTicketById(req:any, res:any) {
     let id = req.params.id;
-    return connection.query("SELECT * FROM tickets WHERE ID = ?", [id], (req_:any, results:any) => {
+    return connection.query("SELECT tickets.*, users.name, users.lastname FROM tickets JOIN users ON tickets.userId = users.ID WHERE tickets.ID = ?", [id], (req_:any, results:any) => {
         res.status(200).send(results[0]);
     });
 }
