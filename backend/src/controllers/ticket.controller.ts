@@ -11,7 +11,7 @@ export function createTicket(req:any, res:any) {
 }
 
 export function getTickets(req:any, res:any) {
-    return connection.query("SELECT * FROM tickets ORDER BY creationDate", (req_:any, results:any) => {
+    return connection.query("SELECT * FROM tickets ORDER BY FIELD(status, 'Abierto', 'En proceso', 'Cerrado')", (req_:any, results:any) => {
         res.status(200).send(results);
     });
 }
