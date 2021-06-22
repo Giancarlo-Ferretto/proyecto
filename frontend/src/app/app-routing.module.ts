@@ -14,6 +14,7 @@ import { AllTicketsComponent } from './pages/tickets/all-tickets/all-tickets.com
 import { AdminGuard } from './admin/admin.guard';
 import { TicketsComponent } from './admin/tickets/tickets.component';
 import { UsersComponent } from './admin/users/users.component';
+import { Error403Component } from './errors/error403/error403.component';
 
 const routes: Routes = [
   {path:"login", component:LoginComponent},
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path:"tickets/historico", component:AllTicketsComponent, canActivate: [AuthGuard], resolve: {profile: ProfileResolver}},
   {path:"admin/tickets", component:TicketsComponent, canActivate: [AuthGuard, AdminGuard]},
   {path:"admin/usuarios", component:UsersComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path:"403", component:Error403Component},
 ];
 
 @NgModule({
