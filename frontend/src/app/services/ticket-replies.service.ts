@@ -10,7 +10,7 @@ export class TicketRepliesService {
 
   constructor(private http:HttpClient) { }
 
-  createTicket(ticketReply:TicketReply) {
+  createTicketReply(ticketReply:TicketReply) {
     return this.http.post(`${environment.API_URL}ticketsreply`, ticketReply);
   }
 
