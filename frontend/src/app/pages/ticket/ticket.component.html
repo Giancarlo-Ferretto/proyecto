@@ -2,21 +2,50 @@
     <div class="doc-header d-flex align-items-center p-3 my-3 rounded shadow-sm">
         <div class="lh-1">
             <h1 class="h5">
-                <span *ngIf="this.ticket.priority === 'Alta'" class="badge bg-danger text-white">{{this.ticket.priority}}</span>
-                <span *ngIf="this.ticket.priority === 'Media'" class="badge bg-warning text-white">{{this.ticket.priority}}</span>
-                <span *ngIf="this.ticket.priority === 'Baja'" class="badge bg-secondary text-white">{{this.ticket.priority}}</span>
-                Solicitud #{{this.ticket.ID}}
+                <span *ngIf="ticket.priority === 'Alta'" class="badge bg-danger text-white">{{ticket.priority}}</span>
+                <span *ngIf="ticket.priority === 'Media'" class="badge bg-warning text-white">{{ticket.priority}}</span>
+                <span *ngIf="ticket.priority === 'Baja'" class="badge bg-secondary text-white">{{ticket.priority}}</span>
+                <span> {{ticket.category}} #{{ticket.ID}}</span>
             </h1>
         </div>
     </div>
     <div class="doc-component my-3 p-3 bg-body rounded shadow-sm">
-        <h6>Categoría</h6>
-        <p>{{this.ticket.category}}</p> 
-        <h6>Estado</h6>
-        <p>{{this.ticket.status}}</p> 
-        <h6>Asunto</h6>
-        <p>{{this.ticket.subject}}</p> 
-        <h6>Descripción</h6>
-        <p>{{this.ticket.description}}</p> 
+        <small>{{ticket.name?.split(" ", 1)}} {{ticket.lastname?.split(" ", 1)}}, {{ticket.creationDate}}</small>
+        <hr>
+        <strong>Asunto</strong>
+        <p>{{ticket.subject}}</p> 
+        <strong>Descripción</strong>
+        <p>{{ticket.description}}</p> 
     </div>
+    <div *ngFor="let item of ticketReplies" class="doc-component my-3 p-3 bg-body rounded shadow-sm">
+        <small><i class="bi bi-award-fill"></i> {{item.name?.split(" ", 1)}} {{item.lastname?.split(" ", 1)}}, {{item.replyDate}}</small>
+        <hr>
+        <span>{{item.reply}}</span>
+    </div>
+    <div *ngIf="isAdmin()" class="doc-component my-3 p-3 bg-body rounded shadow-sm">
+        <form [formGroup]="replyForm" (ngSubmit)="onSubmit()" novalidate>
+            <h5>Respuesta</h5>
+            <div class="form-group">
+                <select class="form-control form-control-sm" formControlName="status" maxlength="150" >
+                    <option [selected]="true">-- SELECCIONA EL NUEVO ESTADO DE LA SOLICITUD --</option>
+                    <option>EN PROCESO</option>
+                    <option>CERRADO</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" formControlName="reply" rows="3"></textarea>
+            </div>
+            <button *ngIf="ticket.status !== 'Cerrado'" type="submit" [disabled]="replyForm.invalid" class="btn btn-primary">ENVIAR RESPUESTA</button>
+            <button *ngIf="ticket.status === 'Cerrado'" type="button" class="btn btn-danger" [disabled]="true"><i class="bi bi-lock"></i> SOLICITUD CERRADA</button>
+        </form>
+    </div>
+    <alert *ngIf="ticket.status === 'Abierto'" type="warning">
+        La solicitud aún está en la cola de espera, será atendida por el administrador del sitio a la brevedad.
+    </alert>
+    <alert *ngIf="ticket.status === 'En proceso'" type="primary">
+        La solicitud ha sido atendida por el administrador del sitio.
+    </alert>
+    <alert *ngIf="ticket.status === 'Cerrado'" type="danger">
+        La solicitud ha sido cerrada por el administrador del sitio.
+    </alert>
 </div>
