@@ -19,7 +19,7 @@ const routes: Routes = [
   {path:"login", component:LoginComponent},
   {path:"register", component:RegisterComponent},
   {path:"", component:HomeComponent, canActivate: [AuthGuard], resolve: {profile: ProfileResolver}},
-  {path:"ticket/:id/ver", component:TicketComponent, canActivate: [AuthGuard]},
+  {path:"ticket/:id/ver", component:TicketComponent, canActivate: [AuthGuard], resolve: {profile: ProfileResolver}},
   {path:"ticket/nuevo", component:NewTicketComponent, canActivate: [AuthGuard], resolve: {profile: ProfileResolver}},
   {path:"tickets/abiertos", component:OpenTicketsComponent, canActivate: [AuthGuard], resolve: {profile: ProfileResolver}},
   {path:"tickets/enproceso", component:PendingTicketsComponent, canActivate: [AuthGuard], resolve: {profile: ProfileResolver}},
