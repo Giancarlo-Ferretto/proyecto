@@ -29,19 +29,17 @@ Entidades adicionales al modelo del caso de estudio, que tienen relevancia en la
 - Entidad comuna, son las comunas que posee una región, se le asignan los atributos nombre y región asociada.
 
 ## Base de datos
-...
+Se decide por implementar una base de relacional MySQL, principalmente por ser fácil de configurar e implementar, y éstas garantizan un esquema fijo como las transacciones ACID. 
+La base de datos de éste proyecto no necesita escalabilidad, ya que no saldrá de su existencia en el ramo, por lo cuál una base de datos SQL posee un rendimiento y capacidad superior a una no relacional si tratamos en un entorno de desarrollo.
 
-## Servidor backend
-...
 
-### Políticas de seguridad
-...
+## Política de seguridad
+El servidor backend implementa el manejo de JSON Web Tokens para el acceso y garantía de la seguridad de los datos. También, se emplea de la librería Helmet para proteger la API de algunas vulnerabilidades web conocidas mediante el manejo de las cabezeras HTTP.
 
-## Servidor frontend
-...
 
-### Bootstrap
-...
+## Cliente
+El servidor frontend posee un diseño responsivo mediante los módulos de ngx-bootstrap y la bibloteca de código abierto bootstrap v4.6. Se utiliza el preprocesador SASS para las hojas de estilo.
+
 
 ## Integrantes 
 Desarrollado por Giancarlo Ferretto.
