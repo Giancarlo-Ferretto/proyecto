@@ -1,44 +1,47 @@
-# Proyecto
+# Proyecto final ICI4240-1
+
+Este repositorio contiene el proyecto final del ramo ICI4240-1, que solventa el caso de estudio asignado de forma aleatoria, "un sistema de servicio al cliente".
+
+
+El proyecto fue desarrollado con NodeJS y ExpressJS para el servidor backend, mientras que la interfaz de usuario fue construida con Angular.
 
 ## Caso de estudio
-
 Un sistema de servicio al cliente de reclamos realizados por los clientes con las siguientes características.
-
 - Los tickets pueden tener 3 estados, Abierto, en desarrollo y Cerrado.
-
 - Los tickets pueden tener prioridad de atención: Alta, Media y Baja
-
 - Solo una persona que ha iniciado sesión puede colocar un ticket.
-
 - Se da una asignación automática de un número de ticket cuando un usuario emite una solicitud.
-
-- La solicitud es un formulario que tiene los siguientes campos: prioridad, categoría, Asunto y descripción.  El campo categoría tiene los siguientes valores: Solicitud genérica, solicitud de cambio, incidente, problema, solicitud de hardware, solicitud de software nuevo.
-
+- La solicitud es un formulario que tiene los siguientes campos: prioridad, categoría, Asunto y descripción. El campo categoría tiene los siguientes valores: Solicitud genérica, solicitud de cambio, incidente, problema, solicitud de hardware, solicitud de software nuevo.
 - El administrador es el único que puede cambiar el estado de ticket y también enviar una respuesta.
 
-## Requerimentos
+## Modelo implementado
+Tomando en cuenta el caso de estudio, se ha decidido implementar el modelo que contempla las siguientes entidades:
+- Entidad usuario, ésta contiene los atributos de nombres, apellidos, correo, contraseña, rut, dirección, región y ciudad. Puede subdividirse en la entidad de administrador, o por defecto cliente.
+- Entidad solicitud, son los reclamos o tickets realizados por los clientes  y contestados por los administradores, contiene como atributo el estado, prioridad, categoría, asunto, descripción, usuario, número identificador y conjunto de respuestas.
+- Entidad respuesta, el caso de estudio no restringe si una solicitud puede ser respondida varias veces, pero tomando en cuenta los estados "en desarrollo" y "cerrado" se deduce que una solicitud puede tener tantas respuestas como el administrador quisiese. Se compone de los atributos solicitud, usuario administrador y campo de respuesta.
 
-De acuerdo con el caso de estudio que se la ha asignado, debe hacer el desarrollo de una aplicación web integrando una base de datos ya sea relacional o no relacional.
+### Modelo entidad-relación
+![image](https://user-images.githubusercontent.com/81869512/122865930-271d8a80-d2f5-11eb-8862-1c97da282021.png)
 
-El desarrollo debe cumplir los siguientes requisitos mínimo:
+### Otras entidades
+Entidades adicionales al modelo del caso de estudio, que tienen relevancia en la vista de registro pero que no se implementarán en la base de datos.
+- Entidad región, son las regiones que se muestran como alternativa en el registro, a ésta le corresponde el atributo nombre y el conjunto de comunas.
+- Entidad comuna, son las comunas que posee una región, se le asignan los atributos nombre y región asociada.
 
-### Backend
-1. Uso al menos uno de los siguientes lenguajes: PHP o nodeJS. También puede hacer uso de frameworks como: Laravel, nodeJSExpress o Django.
-2. Definir el modelo a implementar y presentar el diseño de la base de datos de acuerdo al caso de estudio asignado.
-3. Justificar la decisión del tipo de base de datos seleccionada. Esta justificación es basada con los siguientes criterios: rendimiento, tamaño de datos, capacidad, configuración e implementación.
-4. Se debe implementar los CRUD necesarios, por lo que debe diseñarse un REST-API haciendo uso de algún lenguaje de programación mencionados en el punto 1.
-5. Cada una de las operaciones CRUD deben tener mensajes de comunicación que le informe al usuario acerca del estado de la operación.
-6. Indicar una política de seguridad que debe tomarse en cuenta para construir un backend seguro.
+## Base de datos
+...
 
-### Frontend
-7. Diseño responsivo haciendo uso de los módulos de boostrap o material design.
-8. Uso de preprocesador SASS.
-9. El diseño debe tener un header y un footer, este debe conservarse en toda la aplicación web.
-10. Debe existir una interfaz gráfica de administrador, el cual existe un rol de administrador, y éste pueda acceder a la información a través de un inicio de sesión.
-La información que podrá acceder es:
-a. Reporte de los usuarios registrados.
-b. Reporte de Solicitudes que visualice en colores los tipos de
-11. Debe existir un buscador que permita filtrar la información con al menos 3 opciones.
-12. Formulario de Registro, el cual solicite la siguiente información: nombres, apellidos, RUT, dirección de residencia, Región, Comuna, Correo electrónico, contraseña y confirmar contraseña. La contraseña debe guardarse encriptada en la base de datos. La región que se seleccione debe mostrar las comunas asociadas, este es un tipo de campo “Select”. Los campos deben ser obligatorios.
-13. Formulario de Iniciar Sesión que tenga captcha.
-14. Recordar contraseña.
+## Servidor backend
+...
+
+### Políticas de seguridad
+...
+
+## Servidor frontend
+...
+
+### Bootstrap
+...
+
+## Integrantes 
+Desarrollado por Giancarlo Ferretto.
