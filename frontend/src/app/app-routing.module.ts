@@ -14,7 +14,7 @@ import { AllTicketsComponent } from './pages/tickets/all-tickets/all-tickets.com
 import { AdminGuard } from './admin/admin.guard';
 import { TicketsComponent } from './admin/tickets/tickets.component';
 import { UsersComponent } from './admin/users/users.component';
-import { Error403Component } from './errors/error403/error403.component';
+import { Error403Component } from './pages/errors/error403/error403.component';
 
 const routes: Routes = [
   {path:"login", component:LoginComponent},

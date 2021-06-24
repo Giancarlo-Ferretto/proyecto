@@ -29,7 +29,7 @@ import { NewTicketComponent } from './pages/ticket/new-ticket/new-ticket.compone
 import { AdminGuard } from './admin/admin.guard';
 import { UsersComponent } from './admin/users/users.component';
 import { TicketsComponent } from './admin/tickets/tickets.component';
-import { Error403Component } from './errors/error403/error403.component';
+import { Error403Component } from './pages/errors/error403/error403.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { TicketPipe } from './components/search-bar/pipes/ticket.pipe';
 
