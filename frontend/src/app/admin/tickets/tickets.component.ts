@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
+import { Filter } from 'src/app/components/search-bar/interfaces/filter';
 import { Ticket } from '../../interfaces/ticket';
 import { TicketsService } from '../../services/tickets.service';
 
@@ -11,6 +12,7 @@ import { TicketsService } from '../../services/tickets.service';
 export class TicketsComponent implements OnInit {
   list:Array<Ticket>=[];
   pageList:Array<Ticket>=[];
+  filter:Filter = {filter:"", input:""};
 
   constructor(private ticketsService:TicketsService) { }
 
@@ -23,6 +25,10 @@ export class TicketsComponent implements OnInit {
       this.list = data;
       this.pageList = this.list.slice(0, 10);
     });
+  }
+
+  getFilter(outputFilter:Filter) {
+    this.filter = outputFilter;
   }
 
   pageChanged(event: PageChangedEvent) {

@@ -2,10 +2,10 @@
     <div class="doc-header d-flex align-items-center p-3 my-3 rounded shadow-sm">
         <div class="lh-1">
             <h1 class="h3">Histórico de solicitudes</h1>
-            <small>
-                Lista histórica de solicitudes realizadas.
-            </small>
         </div>
+    </div>
+    <div class="doc-component my-3 p-3 bg-body rounded shadow-sm">
+      <app-search-bar (filter)="getFilter($event)"></app-search-bar>
     </div>
     <div class="doc-component my-3 p-3 bg-body rounded shadow-sm">
         <table class="table table-hover">
@@ -21,7 +21,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let item of pageList">
+              <tr *ngFor="let item of pageList | TicketFilter: this.filter">
                 <td>{{item.ID}}</td>
                 <td>
                     <span *ngIf="item.priority === 'Alta'" class="badge bg-danger text-white">{{item.priority}}</span>

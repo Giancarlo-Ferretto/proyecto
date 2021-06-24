@@ -1,0 +1,12 @@
+<div class="form-group">
+    <select class="form-control form-control-sm" [(ngModel)]="filterModel.filter" (ngModelChange)="onFilterChange()">
+        <option [value]="0">-- SELECCIONA EL FILTRO DE BÚSQUEDA --</option>
+        <option [value]="1">FILTRAR POR CATEGORÍA</option>
+        <option [value]="2">FILTRAR POR ASUNTO</option>
+        <option [value]="3">FILTRAR POR DESCRIPCIÓN</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <input class="form-control" type="text" [(ngModel)]="filterModel.input" (ngModelChange)="onFilterChange()" [disabled]="filterModel.filter === '0'">
+</div>

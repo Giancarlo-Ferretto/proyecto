@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule, JwtModuleOptions } from '@auth0/angular-jwt';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { AlertModule } from 'ngx-bootstrap/alert';
@@ -30,6 +30,8 @@ import { AdminGuard } from './admin/admin.guard';
 import { UsersComponent } from './admin/users/users.component';
 import { TicketsComponent } from './admin/tickets/tickets.component';
 import { Error403Component } from './errors/error403/error403.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { TicketPipe } from './components/search-bar/pipes/ticket.pipe';
 
 export function tokenGetter() {
   return localStorage.getItem("access-token");
@@ -51,7 +53,9 @@ export function tokenGetter() {
     NewTicketComponent,
     UsersComponent,
     TicketsComponent,
-    Error403Component
+    Error403Component,
+    SearchBarComponent,
+    TicketPipe
   ],
   imports: [
     BrowserModule,
@@ -64,6 +68,7 @@ export function tokenGetter() {
         allowedDomains: ["localhost:4200"]
       },
     }),
+    FormsModule,
     ReactiveFormsModule,
     RecaptchaModule,
     RecaptchaFormsModule,
