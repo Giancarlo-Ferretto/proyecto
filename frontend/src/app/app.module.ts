@@ -66,7 +66,7 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        allowedDomains: ["bug"]
+        allowedDomains: [environment.domain]
       },
     }),
     FormsModule,
