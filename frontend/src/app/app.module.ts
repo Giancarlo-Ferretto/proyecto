@@ -32,6 +32,7 @@ import { TicketsComponent } from './admin/tickets/tickets.component';
 import { Error403Component } from './pages/errors/error403/error403.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { TicketPipe } from './components/search-bar/pipes/ticket.pipe';
+import { environment } from '../environments/environment';
 
 export function tokenGetter() {
   return localStorage.getItem("access-token");
@@ -65,7 +66,7 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        allowedDomains: ["localhost:4200"]
+        allowedDomains: [environment.domain]
       },
     }),
     FormsModule,
