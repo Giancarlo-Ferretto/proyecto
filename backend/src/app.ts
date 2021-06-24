@@ -23,7 +23,11 @@ app.use(express.urlencoded({extended: false}));
     
 //hello world
 app.get('/', (req:any, res:any) => {
-    return res.send('Hola mundo!');
+    return res.status(200).json({
+        message:'API REST - Proyecto final ICI4240-1', 
+        name:'Sistema de servicio al cliente',
+        author:'Giancarlo Ferretto'}
+    );
 });
 
 //routes

@@ -32,7 +32,7 @@ export const signUp = async (req:any, res:any) => {
         const newUser:User = {name:req.body.name, lastname:req.body.lastname, password:req.body.password, email:req.body.email, rut:req.body.rut, address:req.body.address, region:req.body.region, city:req.body.city, isAdmin:0};
         newUser.password = await passwordEncryptor.encryptPassword(req.body.password);
 
-        return connection.query("INSERT INTO users SET ?", [newUser], function (error:any, results:any) {
+        connection.query("INSERT INTO users SET ?", [newUser], function (error:any, results:any) {
             if (error) throw error;
             if (process.env.API_KEY) {
                 newUser.id = results.insertId;
@@ -51,7 +51,7 @@ export const signUp = async (req:any, res:any) => {
 
 export const getProfile = async (req:any, res:any) => {
     const profileId = req.userId;
-    return connection.query("SELECT * FROM users WHERE ID = ?", [profileId], (req_:any, results:any) => {
+    connection.query("SELECT * FROM users WHERE ID = ?", [profileId], (req_:any, results:any) => {
         res.status(200).send(results[0]);
     });
 }
